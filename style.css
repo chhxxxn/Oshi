@@ -1,0 +1,1397 @@
+/* ===================================================================
+                     기본설정
+==================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --point-color: #52E596;
+    --point-dark: #20B875;
+    --text-color: #222222;
+    --sub-color: #888888;
+    --line-color: #EEEEEE;
+    --bg-color: #F8F9F8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Pretendard", "Noto Sans KR", sans-serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+    line-height: 1.5;
+    word-break: keep-all;      
+    overflow-wrap: break-word; 
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/* 모바일 하단 메뉴: 기본은 숨김 (모바일 미디어쿼리에서 켜짐) */
+.mobileNav {
+    display: none;
+}
+
+.navItem {
+    transition: color 0.15s;
+}
+
+.navItem:active {
+    color: var(--point-dark);
+}
+
+/* ===================================================================
+                     헤더
+==================================================================== */
+
+.header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.headerInner {
+    max-width: 1200px;
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    display: block;
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.profileButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line-color);
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: #333333;
+    cursor: pointer;
+}
+
+.profileButton svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+
+/* ===================================================================
+                     메인 컨텐츠
+==================================================================== */
+
+.container {
+    width: min(100% - 48px, 1200px);
+    margin: 0 auto;
+    padding: 48px 0 80px;
+}
+
+.welcome {
+    margin-bottom: 48px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--point-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.welcome h1 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 3vw, 36px);
+    letter-spacing: -1.5px;
+}
+
+.welcome > p:last-child {
+    margin: 0;
+    color: var(--sub-color);
+    font-size: 15px;
+}
+
+.categorySection {
+    margin-bottom: 48px;
+}
+
+.sectionHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.sectionHeading h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.8px;
+}
+
+.categoryList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.categoryButton {
+    padding: 10px 20px;
+    border: 1px solid #E7EAE7;
+    border-radius: 30px;
+    background: #FFFFFF;
+    color: #555555;
+    font-size: 14px;
+}
+
+.categoryButton.active {
+    border-color: var(--point-color);
+    background: var(--point-color);
+    color: #153C29;
+    font-weight: 700;
+}
+
+/* ===================================================================
+                     행사 카드
+==================================================================== */
+
+.eventGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.eventCard {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    border-radius: 16px;
+    background: #FFFFFF;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.eventCard:focus-visible {
+    outline: 2px solid var(--point-dark);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) {
+    .eventCard:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
+    }
+
+    #eventPageGrid .eventCard:hover .eventInfo h3 {
+        color: var(--point-dark);
+    }
+}
+
+.eventImage {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #E8F5ED;
+}
+
+.eventInfo {
+    padding: 18px;
+}
+
+.eventCategory {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--point-dark);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.eventInfo h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    line-height: 1.45;
+}
+
+.eventDate {
+    margin: 0;
+    color: var(--sub-color);
+    font-size: 13px;
+}
+
+.textButton {
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: var(--point-dark);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.emptyMessage {
+    padding: 32px 0;
+    color: var(--sub-color);
+    text-align: center;
+}
+
+
+/* ===================================================================
+                     키워드 검색창
+==================================================================== */
+.searchForm {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 560px;
+    height: 48px;
+    margin-bottom: 24px;
+    padding: 0 8px 0 18px;
+    border: 1px solid #E8EBE8;
+    border-radius: 30px;
+    background: #FFFFFF;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchForm:focus-within {
+    border-color: var(--point-dark);
+    box-shadow: 0 0 0 3px rgb(32 184 117 / 10%);
+}
+
+.searchForm input {
+    flex: 1;
+    width: 0;
+    height: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+    font-size: 14px;
+}
+
+.searchForm input::placeholder {
+    color: #AAAAAA;
+}
+
+.searchForm button {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--point-color);
+    color: #153C29;
+}
+
+.searchIcon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+@media (max-width: 600px) {
+    .searchForm {
+        max-width: none;
+        height: 44px;
+        margin-bottom: 20px;
+    }
+
+    .searchForm input {
+        font-size: 13px;
+    }
+}
+
+/* ===================================================================
+                     카테고리 페이지
+==================================================================== */
+
+.eventPageIntro {
+    margin-bottom: 40px;
+}
+
+.eventPageIntro h1 {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -1.5px;
+}
+
+.eventPageIntro > p:last-child {
+    margin: 0;
+    color: var(--sub-color);
+    font-size: 14px;
+}
+
+.eventPageToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 28px 0 18px;
+}
+
+.eventPageToolbar > p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sortControl select {
+    padding: 9px 30px 9px 12px;
+    border: 1px solid var(--line-color);
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: var(--text-color);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#eventPageGrid .eventCard {
+    display: block;
+    cursor: pointer;
+}
+
+#eventPageGrid .eventImage {
+    aspect-ratio: 4 / 3;
+}
+
+#eventPageGrid .eventCard:focus-visible {
+    outline: 2px solid var(--point-dark);
+    outline-offset: 3px;
+}
+
+#eventPageGrid .eventCard:hover .eventInfo h3 {
+    color: var(--point-dark);
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===================================================================
+                     행사 상세 페이지
+==================================================================== */
+
+.eventDetail {
+    margin-top: 24px;
+}
+
+.detailLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+.eventDetailImage {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 16px;
+    background: #E8F5ED;
+}
+
+.detailSummary h1 {
+    margin: 4px 0 24px;
+    font-size: clamp(24px, 3vw, 32px);
+    letter-spacing: -1px;
+    line-height: 1.35;
+}
+
+.detailInfo {
+    margin: 0 0 28px;
+    border-top: 1px solid var(--line-color);
+}
+
+.detailInfo > div {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-color);
+    font-size: 14px;
+}
+
+.detailInfo dt {
+    flex-shrink: 0;
+    width: 72px;
+    color: var(--sub-color);
+}
+
+.detailInfo dd {
+    margin: 0;
+    font-weight: 500;
+}
+
+.primaryButton {
+    display: block;
+    padding: 14px 24px;
+    border-radius: 30px;
+    background: var(--point-color);
+    color: #153C29;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primaryButton.active {
+    background: var(--point-dark);
+    color: #FFFFFF;
+}
+
+.detailBody {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line-color);
+}
+
+.detailBody h2 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.detailBody p {
+    margin: 0;
+    color: #444444;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.detailBody .goodsList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (hover: hover) {
+    .primaryButton:hover {
+        background: var(--point-dark);
+        color: #FFFFFF;
+    }
+}
+
+@media (max-width: 900px) {
+    .detailLayout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .detailBody .goodsList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .eventDetailImage {
+        border-radius: 12px;
+        aspect-ratio: 4 / 5;
+    }
+
+    .detailBody {
+        margin-top: 32px;
+    }
+}
+
+/* ============ 상세 페이지: 버튼/굿즈/유의사항 ============ */
+
+.detailActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0 0;
+}
+
+.actionButton {
+    display: block;
+    padding: 13px 12px;
+    border: 1px solid var(--line-color);
+    border-radius: 30px;
+    background: #FFFFFF;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.actionButton.active {
+    border-color: var(--point-color);
+    background: #E8F5ED;
+    color: var(--point-dark);
+}
+
+.highlightList,
+.goodsList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.highlightCard,
+.goodsCard {
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+.highlightCard p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.goodsPrice {
+    color: var(--point-dark);
+    font-weight: 700;
+}
+
+.goodsNote {
+    color: var(--sub-color);
+}
+
+.noticeList {
+    margin: 0;
+    padding-left: 20px;
+    color: #444444;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.cardImage {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center top;
+    background: #E8F5ED;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 18px;
+}
+
+.goodsCard .cardImage {
+    aspect-ratio: 1 / 1;   
+}
+
+.cardBody p {
+    margin: 0;
+}
+
+.goodsCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.goodsCard .goodsName {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;          
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.4em * 2);    
+    line-height: 1.4;
+}
+
+@media (hover: hover) {
+    .actionButton:hover {
+        border-color: var(--point-dark);
+    }
+}
+
+@media (max-width: 900px) {
+    .highlightList,
+    .goodsList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .detailActions {
+        grid-template-columns: minmax(0, 1fr);   
+    }
+
+    .highlightList,
+    .goodsList {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+
+    .highlightCard,
+    .goodsCard {
+        flex: 0 0 70%;
+        scroll-snap-align: start;
+    }
+}
+
+/* ===================================================================
+                     굿즈 페이지
+==================================================================== */
+
+.goodsPage h1 {
+    margin: 16px 0 8px;
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: -1px;
+}
+
+.goodsPageCount {
+    margin: 0;
+    color: var(--sub-color);
+    font-size: 14px;
+}
+
+.goodsPage .goodsList {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .goodsPage .goodsList {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow: visible;
+    }
+
+    .goodsPage .goodsCard {
+        flex: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .goodsPage .goodsList {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ============ 지도영역 ============ */
+
+.mapBox {
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    border-radius: 16px;
+    background: #E8F5ED;
+}
+
+.mapBox iframe {
+    display: block;
+    width: 100%;
+    height: 240px;
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    .mapBox iframe {
+        height: 220px;
+    }
+}
+
+/* ===== 굿즈 플래너 ===== */
+
+.plannerTop {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.plannerBack {
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+}
+
+.plannerTop h1 {
+    flex: 1;
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.currencyBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.currencyBox small {
+    color: var(--sub-color);
+    font-size: 11px;
+}
+
+.currencyToggle {
+    display: flex;
+    padding: 3px;
+    border: 1px solid var(--line-color);
+    border-radius: 30px;
+    background: #FFFFFF;
+}
+
+.currencyToggle button {
+    width: 34px;
+    height: 28px;
+    border: 0;
+    border-radius: 30px;
+    background: transparent;
+    font-weight: 700;
+}
+
+.currencyToggle button.active {
+    background: var(--point-color);
+    color: #153C29;
+}
+
+/* 탭 */
+.plannerTabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.plannerTabs button {
+    flex: 1;
+    padding: 12px 0;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--sub-color);
+    font-weight: 700;
+}
+
+.plannerTabs button.active {
+    border-bottom-color: var(--text-color);
+    color: var(--text-color);
+}
+
+/* 행사 선택 카드 */
+.eventPicker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #C8F5D4;
+}
+
+.eventPicker img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #E8F5ED;
+}
+
+.eventPicker div {
+    flex: 1;
+    min-width: 0;
+}
+
+.eventPicker strong {
+    display: block;
+    font-size: 14px;
+}
+
+.eventPicker small {
+    color: #4C6B58;
+    font-size: 12px;
+}
+
+/* 투명 select를 카드 위에 겹침 */
+.eventPicker select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* 굿즈 목록 */
+.plannerList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.plannerItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.plannerItem img {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #E8F5ED;
+}
+
+.plannerInfo {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.plannerInfo strong {
+    font-size: 14px;
+}
+
+.plannerInfo small {
+    color: var(--sub-color);
+    font-size: 11px;
+}
+
+.plannerPrice {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* 수량 조절 */
+.stepper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #BFEACB;
+    border-radius: 30px;
+    background: #E8F9EE;
+}
+
+.stepper button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--point-dark);
+    font-size: 18px;
+}
+
+.stepper button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.stepper span {
+    min-width: 32px;
+    padding: 4px 0;
+    background: #FFFFFF;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* 굿즈 추가 버튼 */
+.addGoodsButton {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid #999999;
+    border-radius: 30px;
+    background: #FFFFFF;
+    font-weight: 700;
+}
+
+/* 예상 총액 */
+.plannerSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid var(--line-color);
+}
+
+.plannerSummary strong {
+    font-size: 20px;
+    color: var(--point-dark);
+}
+
+/* 추가 팝업 */
+.addDialog {
+    width: min(90vw, 420px);
+    padding: 20px;
+    border: 0;
+    border-radius: 16px;
+}
+
+.addDialog::backdrop {
+    background: rgb(0 0 0 / 40%);
+}
+
+.addDialogList {
+    margin: 0 0 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.addDialogList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-color);
+}
+
+/* 데스크톱: 2단 */
+@media (min-width: 901px) {
+    .plannerLayout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 32px;
+        align-items: start;
+    }
+
+    .plannerSummary {
+        position: sticky;
+        top: 24px;
+        margin-top: 0;
+    }
+
+    .plannerTabs {
+        max-width: 760px;
+    }
+}
+
+/* 모바일: 하단 메뉴 위에 총액 고정, 자체 상단바 사용 */
+@media (max-width: 600px) {
+    .plannerPage .header {
+        display: none;
+    }
+
+    .plannerSummary {
+        position: sticky;
+        bottom: 76px;
+        box-shadow: 0 -4px 16px rgb(0 0 0 / 6%);
+    }
+}
+
+/* ===== 캘린더 페이지 ===== */
+
+.calLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+}
+
+.calBox {
+    padding: 16px;
+    border: 1px solid #CDEFD8;
+    border-radius: 16px;
+    background: #FFFFFF;
+}
+
+.calNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.calNav strong {
+    font-size: 17px;
+}
+
+.calNav button {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+}
+
+.calWeek,
+.calGrid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.calWeek span {
+    padding: 6px 0;
+    color: var(--sub-color);
+    font-size: 12px;
+    text-align: center;
+}
+
+.calCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 52px;
+    padding: 6px 0 4px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.calCell.other {
+    color: #CCCCCC;
+    font-weight: 400;
+}
+
+.calCell.sun span { color: #E5484D; }
+.calCell.sat span { color: #3B82F6; }
+
+.calCell > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.calCell.today > span {
+    background: var(--point-color);
+    color: #153C29;
+}
+
+.calCell.selected > span {
+    outline: 2px solid var(--point-dark);
+}
+
+.dots {
+    display: flex;
+    gap: 3px;
+    height: 6px;
+    margin-top: 3px;
+}
+
+.dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+/* 일정 목록 */
+.calDate {
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+
+.calCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 10px;
+    padding: 14px 16px 14px 28px;
+    border: 1px solid var(--line-color);
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+.calCard strong {
+    font-size: 15px;
+}
+
+.calCard small {
+    color: #555555;
+    font-size: 13px;
+}
+
+.calCard .calPeriod {
+    color: var(--sub-color);
+    font-size: 12px;
+}
+
+.calDot {
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* 데스크톱: 달력 왼쪽, 일정 오른쪽 */
+@media (min-width: 901px) {
+    .calLayout {
+        grid-template-columns: 420px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+    }
+
+    .calDate:first-child {
+        margin-top: 0;
+    }
+}
+
+/*================================ 태블릿 ================================*/
+
+@media (min-width: 601px) and (max-width: 900px) {
+    #eventPageGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .eventGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .desktopNav {
+        gap: 20px;
+    }
+}
+
+/*================================ 모바일================================ */
+
+@media (max-width: 600px) {
+    .logo img {
+        width: 85px;
+    }
+}
+
+.desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.desktopNav a {
+    color: var(--sub-color);
+    font-size: 15px;
+}
+
+.desktopNav a.active {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    body {
+        background: #FFFFFF;
+    }
+
+    .headerInner {
+        min-height: 64px;
+        padding: 0 20px;
+    }
+
+    .desktopNav {
+        display: none;
+    }
+
+    .profileButton {
+        width: 34px;
+        height: 34px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 28px 20px 100px;
+    }
+
+    .welcome {
+        margin-bottom: 32px;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .welcome > p:last-child {
+        font-size: 13px;
+    }
+
+    .categorySection {
+        margin-bottom: 36px;
+    }
+
+    .sectionHeading h2 {
+        font-size: 18px;
+    }
+
+    .categoryList {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .categoryButton {
+        flex-shrink: 0;
+        padding: 9px 15px;
+        font-size: 12px;
+    }
+
+    .eventGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    }
+
+    .eventCard {
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+    }
+
+    .eventImage {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .eventInfo {
+        padding: 12px;
+    }
+
+    .eventInfo h3 {
+        font-size: 14px;
+    }
+
+    .eventDate {
+        font-size: 11px;
+    }
+
+    .mobileNav {
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--line-color);
+        background: rgb(255 255 255 / 96%);
+    }
+
+    .navItem {
+        display: flex;
+        min-width: 48px;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        color: #888888;
+    }
+
+    .navItem small {
+        font-size: 10px;
+    }
+
+    .navItem.active {
+        color: var(--point-dark);
+    }
+}
+
+@media (max-width: 600px) {
+    .eventPageIntro {
+        margin-bottom: 30px;
+    }
+
+    .eventPageIntro h1 {
+        font-size: 25px;
+    }
+
+    .eventPageToolbar {
+        margin-top: 22px;
+    }
+
+    #eventPageGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #eventPageGrid .eventCard {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    #eventPageGrid .eventImage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    #eventPageGrid .eventInfo {
+        padding: 10px;
+    }
+
+    #eventPageGrid .eventInfo h3 {
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+
+    #eventPageGrid .eventDate {
+        font-size: 10px;
+    }
+
+    #eventPageGrid .eventCategory {
+        font-size: 10px;
+    }
+}
+
